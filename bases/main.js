@@ -1,329 +1,202 @@
 "use strict";
-(function () {
-    var a = 10;
-    var b = 10;
-})();
-(function () {
-    // Funciones Básicas
-    function sumar(a, b) {
-        return a + b;
+(() => {
+    class Mutante {
+        constructor(name, realName) {
+            this.name = name;
+            this.realName = realName;
+        }
     }
-    var contar = function (heroes) {
-        return heroes.length;
-    };
-    var superHeroes = ['Flash', 'Arrow', 'Superman', 'Linterna Verde'];
-    contar(superHeroes);
-    //Parametros por defecto
-    var llamarBatman = function (llamar) {
-        if (llamar === void 0) { llamar = false; }
-        if (llamar) {
-            console.log('Batiseñal activada');
+    class Xmen extends Mutante {
+        salvarMundo() {
+            return 'Mundo Salvado !!';
         }
-    };
-    llamarBatman();
-    // Rest?
-    var unirheroes = function () {
-        var personas = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            personas[_i] = arguments[_i];
-        }
-        return personas.join(', ');
-    };
-    // Tipo funcion
-    var noHaceNada = function (numero, texto, booleano, arreglo) { };
-    // Crear el tipo de funcion que acepte la funcion "noHaceNada"
-    var noHaceNadaTampoco;
-    noHaceNadaTampoco = noHaceNada;
-})();
-(function () {
-    // los argumentos opcionales deben ir al final
-    // cuando a los argumentos les ponemos un valor por defecto entonces pasa a ser un argumento opcional
-    var fullName = function (firstName, lastName, upper) {
-        if (upper === void 0) { upper = false; }
-        if (upper) {
-            return "".concat(firstName, " ").concat(lastName || 'no last name.').toUpperCase();
-        }
-        else {
-            return "".concat(firstName, " ").concat(lastName || 'no last name.');
-        }
-    };
-    var name = fullName('tony', 'stark');
-    console.log(name);
-})();
-(function () {
-    // en typescript, el ternario define a ese argumento como opcional
-    // en Javascript TODOS los argumentos son OPCIONALES
-    var fullName = function (firstName, lastName) {
-        return "".concat(firstName, " ").concat(lastName || 'no last name.');
-    };
-    var name = fullName('tony');
-    console.log(name);
-})();
-(function () {
-    // estos argumentos son obligatorios
-    var fullName = function (firstName, lastName) {
-        return "".concat(firstName, " ").concat(lastName);
-    };
-    // let noName: string;
-    // const name = fullName(noName, 'stark');
-    var name = fullName('tony', 'stark');
-    console.log(name);
-})();
-(function () {
-    // tengo un argumento obligatorio y después tengo EL RESTO DE LOS argumentos
-    var fullName = function (firstName) {
-        var restArgs = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            restArgs[_i - 1] = arguments[_i];
-        }
-        return "".concat(firstName, " ").concat(restArgs.join(' '));
-    };
-    var superman = fullName('clark', 'joseph', 'kent');
-    console.log(superman);
-})();
-(function () {
-    // las firmas de las funciones en typescript
-    var addNumbers = function (a, b) { return a + b; };
-    var greet = function (name) { return "Hola ".concat(name); };
-    var saveTheWorld = function () { return "El mundo esta salvado"; };
-    var myFunction;
-    // myFunction = 10;
-    // console.log(myFunction);
-    // let myFunction: (y: number, z: number) => number;
-    // myFunction = addNumbers;
-    // console.log(myFunction(1, 2));
-    // let myFunction: (y: string) => string;
-    // myFunction = greet;
-    // console.log(myFunction('Fernando'));
-    // let myFunction: () => string;
-    // myFunction = saveTheWorld;
-    // console.log(myFunction());
-})();
-(function () {
-    var hero = 'Flash';
-    function returnName() {
-        return hero;
     }
+    class Villian extends Mutante {
+        conquistarMundo() {
+            return 'Mundo Conquistado !!';
+        }
+    }
+    // console log comentados solo para tener limpia la consola
+    const wolveribe = new Xmen('Wolverine', 'Logan');
+    // console.log(wolveribe.salvarMundo());
+    const magneto = new Villian('Magneto', 'Magnus');
+    // console.log(magneto.conquistarMundo());
+    const printName = (character) => {
+        // recibe un argumento que es mutante o extiende de él
+        console.log(character.realName);
+    };
+    // printName(wolveribe); // Logan
+    // printName(magneto); // Magnus
 })();
-(function () {
-    // Objetos
-    var batimovil = {
-        carroceria: 'Negra',
-        modelo: '6x6',
-        antibalas: true,
-        pasajeros: 4,
-    };
-    var bumblebee = {
-        carroceria: 'Amarillo con negro',
-        modelo: '4x2',
-        antibalas: true,
-        pasajeros: 4,
-        disparar: function () {
-            // El metodo disparar es opcional
-            console.log('Disparando');
-        },
-    };
-    var villanos = [
-        {
-            nombre: 'Lex Luthor',
-            edad: 54,
-            mutante: false,
-        },
-        {
-            nombre: 'Erik Magnus Lehnsherr',
-            edad: 49,
-            mutante: true,
-        },
-        {
-            nombre: 'James Logan',
-            edad: undefined,
-            mutante: true,
-        },
-    ];
-    var charles = {
-        poder: 'psiquico',
-        estatura: 1.78,
-    };
-    var apocalipsis = {
-        lider: true,
-        miembros: ['Magneto', 'Tormenta', 'Psylocke', 'Angel'],
-    };
-    // Mystique, debe poder ser cualquiera de esos dos mutantes (charles o apocalipsis)
-    var mystique;
-    mystique = charles;
-    mystique = apocalipsis;
-})();
-(function () {
-    var flash = {
-        name: 'Barry Allen',
-        age: 24,
-        powers: ['super velocidad', 'viajar en el tiempo'],
-    };
-    console.log(flash);
-    var superman = {
-        name: 'Clark Kent',
-        age: 60,
-        powers: ['Super velocidad', 'Super fuerza'],
-        getName: function () {
+(() => {
+    //* Las clases tienen:
+    //*   Propiedades y métodos:
+    //*     - Privados: propiedad a la que sólo se accede des de dentro de la clase
+    //*     - Públicos: por defecto son público, con lo cual, no es necesario especificar el tipo
+    //*         si es que es de este tipo, pero es una buena práctica hacerlo
+    //*     - Estáticos: se usa desde la clase, no desde la instancia del objeto
+    //? Propiedades:
+    //? ============
+    //* Declaración válida tradicional:
+    // class Avenger {
+    //   private name: string;
+    //   public team: string;  // si no pongo public es lo mismo que ponerlo, se coloca por buena práctica
+    //   public realName?: string;
+    //   static avgAge: number = 35;
+    //   constructor(name: string, team: string, realName?: string) {
+    //     this.name = name;
+    //     this.team = team;
+    //     this.realName = realName;
+    //   }
+    // }
+    // const antman: Avenger = new Avenger('Antman', 'Capitan', 'Scott Lang');
+    // console.log(antman);
+    // console.log(Avenger.avgAge);
+    //* Forma corta proporcionada por typescript
+    // class Avenger {
+    //   static avgAge: number = 35;
+    //   constructor(private name: string, private team: string, public realName?: string) {}
+    // }
+    // const antman: Avenger = new Avenger('Antman', 'Capitan', 'Scott Lang');
+    // console.log(antman);
+    // console.log(Avenger.avgAge);
+    //? Métodos:
+    //? ============
+    class Avenger {
+        static getTeam() {
+            return 'S.H.I.E.L.D.';
+        }
+        static getClassRealName() {
+            // devuelve el NOMBRE DE LA CLASE
             return this.name;
-        },
-    };
-    console.log(superman);
-    console.log(superman.getName());
-})();
-(function () {
-    var flash = {
-        name: 'Barry Allen',
-        age: 24,
-        powers: ['super velocidad', 'viajar en el tiempo'],
-    };
-    console.log(flash);
-    var superman = {
-        name: 'Clark Kent',
-        age: 60,
-        powers: ['Super velocidad', 'Super fuerza'],
-        getName: function () {
-            return this.name;
-        },
-    };
-    console.log(superman);
-})();
-(function () {
-    var myCustomVariable = 'Fernando';
-    console.log(typeof myCustomVariable);
-    myCustomVariable = 20;
-    console.log(typeof myCustomVariable);
-    myCustomVariable = {
-        name: 'Bruce',
-        age: 43,
-        powers: [1],
-    };
-    console.log(typeof myCustomVariable);
-    console.log(myCustomVariable);
-})();
-(function () {
-    var avenger = 123;
-    var exists;
-    var power;
-    avenger = 'Dr Strange';
-    console.log(avenger.charAt(0)); // este es un casteo que me permite decir: "esto es un any pero trátalo como un string"
-    avenger = 150.23256415;
-    console.log(avenger.toFixed(2)); // es otra forma de hacer el mismo casteo, queda a discreción del programador
-})();
-(function () {
-    // Tipos
-    var batman = 'Bruce';
-    var superman = 'Clark';
-    var existe = false;
-    // Tuplas
-    var parejaHeroes = [batman, superman];
-    var villano = ['Lex Lutor', 5, true];
-    // Arreglos
-    var aliados = ['Mujer Maravilla', 'Acuaman', 'San', 'Flash'];
-    //Enumeraciones
-    var fuerzaFlash = 5 /* Fuerza.Flash */;
-    var fuerzaSuperman = 100 /* Fuerza.Superman */;
-    var fuerzaBatman = 1 /* Fuerza.Batman */;
-    var fuerzaAcuaman = 0 /* Fuerza.Acuaman */;
-    // Retorno de funciones
-    function activar_batiseñal() {
-        return 'activada';
+        }
+        constructor(name, team, realName) {
+            this.name = name;
+            this.team = team;
+            this.realName = realName;
+        }
+        bio() {
+            return `${this.name} (${this.team})`;
+        }
     }
-    function pedir_ayuda() {
-        console.log('Auxilio!!!');
+    Avenger.avgAge = 35;
+    const antman = new Avenger('Antman', 'Capitan', 'Scott Lang');
+    // console log comentados solo para tener limpia la consola
+    // console.log(antman);
+    // console.log(Avenger.avgAge);
+    // console.log(antman.bio());
+    // console.log(Avenger.getTeam());
+    // console.log(Avenger.getClassRealName());
+})();
+(() => {
+    // console log comentados solo para tener limpia la consola
+    class Avenger {
+        constructor(name, realName) {
+            this.name = name;
+            this.realName = realName;
+            // console.log('Constructor Avenger llamado !!');
+        }
+        getFullName() {
+            return `${this.name} ${this.realName}`;
+        }
     }
-    // Aserciones de Tipo
-    var poder = '100';
-    var largoDelPoder = poder.length;
-    console.log(largoDelPoder);
-})();
-(function () {
-    var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    console.log(numbers);
-    var villians = ['Omega Rojo', 'Dormammu', 'Duende Verde'];
-    villians.forEach(function (v) { return console.log(v.toUpperCase()); });
-    numbers.forEach(function (v) { return console.log(v); });
-})();
-(function () {
-    var isSuperman = true;
-    var isBatman = false;
-    isSuperman = isBatman ? true : false;
-    console.log({ isSuperman: isSuperman });
-})();
-(function () {
-    var AudioLevel;
-    (function (AudioLevel) {
-        AudioLevel[AudioLevel["min"] = 1] = "min";
-        AudioLevel[AudioLevel["medium"] = 2] = "medium";
-        AudioLevel[AudioLevel["max"] = 10] = "max";
-    })(AudioLevel || (AudioLevel = {}));
-    var currentAudio = AudioLevel.max;
-    console.log(currentAudio);
-    console.log(AudioLevel);
-})();
-(function () {
-    // never no es void ni undefined, never es never
-    var error = function (message) {
-        throw new Error(message);
-    };
-    error('Auxilio!!!');
-})();
-// una función del tipo never es una función que por lo general va a terminar
-// con un error
-(function () {
-    var nada = undefined;
-    console.log(nada);
-    var isActive = undefined;
-    // Si cambiamos el valor por defecto de la propiedad: (en el tsconfig)
-    //? "strictNullChecks": true
-    // de true a false,
-    //   + undefined va a ser permitido como valor de la variable 'isActive'
-    //   + null va a ser permitido como valor de la variable 'isActive'
-    // y OJO: null !== undefined
-    console.log(isActive);
-})();
-(function () {
-    var avengers = 10;
-    console.log(avengers);
-    var villians = 20;
-    if (avengers < villians) {
-        console.log('Estamos en problemas');
+    class Xmen extends Avenger {
+        constructor(name, realName, isMutant) {
+            super(name, realName);
+            this.isMutant = isMutant;
+            // console.log('Constructor Xmen llamado !!');
+        }
+        getFullNameFromXmen() {
+            console.log(super.getFullName());
+        }
     }
-    else {
-        console.log('Nos salvamos');
-    }
-    avengers = Number('123A'); //? OJO: NaN es considerado un número (en JavaScript)
-    console.log({ avengers: avengers });
+    const wolverine = new Xmen('Wolverine', 'Logan', true);
+    // console.log(wolverine);
+    // wolverine.getFullNameFromXmen();
 })();
-(function () {
-    var _a;
-    var batman = 'Batman';
-    var linternaVerde = 'Linterna Verde';
-    var volcanNegro = "H\u00E9roe: Volcan Negro";
-    var abc = 123;
-    console.log("I'm ".concat(batman, ", ").concat(abc)); // automáticamente hace el abc.toString()
-    console.log(batman.toUpperCase());
-    console.log(((_a = batman[10]) === null || _a === void 0 ? void 0 : _a.toUpperCase()) || 'No está presente');
-})();
-(function () {
-    var hero = ['Dr. Strange', 100, true];
-    hero[0] = 'Ironman';
-    hero[1] = 50;
-    hero[2] = false;
-    console.log(hero);
-})();
-(function () {
-    // Una función que no devuelve nada, es decir que no tenga un return,
-    // es una función void, que no devuelve nada, el valos de a será undefined
-    function callBatman() {
-        return; // este return es lo mismo que hacer un 'return undefined'
-        // esto nos puede servir para algún punto en donde queremos salir
-        // de la función sin devolver nada
+//! Diferencia entre PRIVATE y PROTECTED
+//?  PRIVATE: el acceso a la propiedad/método es SOLO desde DENTRO
+//?           de la clase
+//?  PROTECTED: el acceso a la propiedad/método es SOLO desde DENTRO
+//?             de la clase o de sus clases HIJAS/HEREDADAS
+//? Getters y Setters: que son ?
+//? Básicamente son cómo propiedades comunes y corrientes
+//?   pero internamente son como un métdodo
+//?   se los llama, pero no se ejecutan => no se ponen los paréntesis al final
+//* Algunas ventajas del uso de los getters y setters es que:
+//*   - podemos controlar el acceso a las propiedades
+//*   - podemos controlar el comportamiento de las propiedades
+//*   - podemos hacer validaciones: de tipos, de valores por defecto, etc
+(() => {
+    // console log comentados solo para tener limpia la consola
+    class Avenger {
+        constructor(name, realName) {
+            this.name = name;
+            this.realName = realName;
+            // console.log('Constructor Avenger llamado !!');
+        }
+        getFullName() {
+            return `${this.name} ${this.realName}`;
+        }
     }
-    function superman() {
-        return null; // null != undefined != void
+    class Xmen extends Avenger {
+        constructor(name, realName, isMutant) {
+            super(name, realName);
+            this.isMutant = isMutant;
+            // console.log('Constructor Xmen llamado !!');
+        }
+        get fullName() {
+            // un getter no recibe argumentos y siempre devuelve un valor
+            return `${this.name} - ${this.realName}`;
+        }
+        set fullName(name) {
+            // un setter recibe 1 SOLO argumento y no devuelve nada
+            //* VALIDACION
+            if (name.length < 3) {
+                throw new Error('El nombre debe ser mayor de 3 caracteres');
+            }
+            this.name = name;
+        }
+        getFullNameFromXmen() {
+            console.log(super.getFullName());
+        }
     }
-    var a = callBatman();
-    console.log(a);
+    const wolverine = new Xmen('Wolverine', 'Logan', true);
+    // console.log(wolverine);
+    // wolverine.getFullNameFromXmen();
+    // console.log(wolverine.fullName); // acceso al getter: sin paréntesis: NO SE EJECUTA, sólo se mandan a llamar
+    // wolverine.fullName = 'Diego'; // acceso al setter
+    // console.log(wolverine.fullName); // acceso al getter: sin paréntesis: NO SE EJECUTA, sólo se mandan a llamar
+    // wolverine.fullName = 'As'; // acceso al setter
+    // console.log(wolverine.fullName); // acceso al getter: sin paréntesis: NO SE EJECUTA, sólo se mandan a llamar
+})();
+(() => {
+    //* Patrón Singleton:
+    //* Si bien por buenas prácticas no se debería utilizar
+    //*   puede ser necesario implementarlo, esta es la forma de hacerlo en typescript
+    class Apocalipsis {
+        constructor(name) {
+            this.name = name;
+        }
+        static callApocalipsis() {
+            // patron singleton
+            if (!Apocalipsis.instance) {
+                Apocalipsis.instance = new Apocalipsis('Soy apocalipsis... el único');
+            }
+            return this.instance;
+        }
+        changeName(newName) {
+            this.name = newName;
+        }
+    }
+    // const apocalipsis1 = new Apocalipsis('Soy Apocalipsis... el único');
+    // const apocalipsis2 = new Apocalipsis('Soy Apocalipsis... el único');
+    // const apocalipsis3 = new Apocalipsis('Soy Apocalipsis... el único');
+    // console.log(apocalipsis1, apocalipsis2, apocalipsis3);
+    const apocalipsis1 = Apocalipsis.callApocalipsis();
+    const apocalipsis2 = Apocalipsis.callApocalipsis();
+    const apocalipsis3 = Apocalipsis.callApocalipsis();
+    apocalipsis1.changeName('Xavier');
+    console.log(apocalipsis1, apocalipsis2, apocalipsis3);
 })();
 //# sourceMappingURL=main.js.map
