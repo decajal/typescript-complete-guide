@@ -4,8 +4,8 @@
 // import { powers } from './data/powers';
 // import arrayOfPowers from './data/powers'; // en las importaciones por defecto puedo poner el nombre que yo quiera en el destino
 
-import { printObject, genericFunction, genericFunctionArrow } from '../generics/generics';
-import { Hero, Villain } from '../interfaces';
+import { printObject, genericFunction, genericFunctionArrow } from '../../generics/generics';
+import { Hero, Villain } from '../../interfaces';
 
 // const Hero = 123;
 // console.log('Hola Mundo!!!!!');
